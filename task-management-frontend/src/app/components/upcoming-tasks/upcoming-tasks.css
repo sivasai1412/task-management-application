@@ -1,0 +1,97 @@
+/* General Layout */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  background: #fefefe;
+}
+
+/* Header */
+h2 {
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Filter Section */
+.filter {
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+select {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Task Card */
+.task-card {
+  background: linear-gradient(to right, #f3f9ff, #fefefe);
+  border: 1px solid #d0dce7;
+  border-left: 6px solid #007bff;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.task-card:hover {
+  transform: scale(1.01);
+}
+
+.task-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+/* Priority Tag Styles */
+.priority {
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+}
+
+.priority.low {
+  background-color: #28a745;
+}
+
+.priority.medium {
+  background-color: #ffc107;
+}
+
+.priority.high {
+  background-color: #dc3545;
+}
+
+/* No Tasks Fallback */
+.no-tasks {
+  font-style: italic;
+  text-align: center;
+  margin-top: 2rem;
+  color: #666;
+}
+
+/* Status Icons */
+.status {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.status-completed {
+  color: #28a745;
+}
+
+.status-pending {
+  color: #dc3545;
+}

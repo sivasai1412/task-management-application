@@ -8,7 +8,8 @@ import { Task } from '../../models/task.model';
   selector: 'app-upcoming-tasks',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './upcoming-tasks.component.html'
+  templateUrl: './upcoming-tasks.component.html',
+  styleUrls: ['./upcoming-tasks.css']
 })
 export class UpcomingTasksComponent implements OnInit {
   tasks: Task[] = [];

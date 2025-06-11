@@ -1,19 +1,27 @@
-<div>
-  <label for="priority">Filter by Priority:</label>
-  <select id="priority" [(ngModel)]="selectedPriority" (change)="loadTasks()">
-    <option value="">All</option>
-    <option value="LOW">Low</option>
-    <option value="MEDIUM">Medium</option>
-    <option value="HIGH">High</option>
-  </select>
+<div class="container">
+  <h2>📋 Upcoming Tasks</h2>
+
+  <div class="filter">
+    <label for="priority">Filter by Priority:</label>
+    <select id="priority" [(ngModel)]="selectedPriority" (change)="loadTasks()">
+      <option value="">All</option>
+      <option value="LOW">Low</option>
+      <option value="MEDIUM">Medium</option>
+      <option value="HIGH">High</option>
+    </select>
+  </div>
+
+  <div *ngIf="tasks.length > 0; else noTasks">
+    <div class="task-card" *ngFor="let task of tasks">
+      <h3>{{ task.title }}</h3>
+      <p><strong>Due:</strong> {{ task.dueDate }}</p>
+      <p><strong>Priority:</strong> <span class="priority {{ task.priority.toLowerCase() }}">{{ task.priority }}</span></p>
+      <p><strong>Status:</strong> {{ task.completed ? '✅ Completed' : '❌ Pending' }}</p>
+      <p *ngIf="task.description"><strong>Description:</strong> {{ task.description }}</p>
+    </div>
+  </div>
+
+  <ng-template #noTasks>
+    <p class="no-tasks">No tasks found for the selected priority.</p>
+  </ng-template>
 </div>
-
-<ul *ngIf="tasks.length > 0; else noTasks">
-  <li *ngFor="let task of tasks">
-    <strong>{{ task.title }}</strong> ({{ task.priority }}) - Due: {{ task.dueDate }} - Completed: {{ task.completed }}
-  </li>
-</ul>
-
-<ng-template #noTasks>
-  <p>No tasks found for the selected priority.</p>
-</ng-template>
