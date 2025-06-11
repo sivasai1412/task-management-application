@@ -21,4 +21,20 @@ export class TaskService {
     return this.http.get<Task[]>(this.baseUrl, { params });
   }
 
+   getTaskById(id: string): Observable<Task> {
+      return this.http.get<Task>(`${this.baseUrl}/${id}`);
+   }
+
+   createTask(task: Task): Observable<Task> {
+      return this.http.post<Task>(this.baseUrl, task);
+   }
+
+   updateTask(id: string, task: Task): Observable<Task> {
+      return this.http.put<Task>(`${this.baseUrl}/${id}`, task);
+   }
+
+   deleteTask(id: string): Observable<any> {
+      return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+   }
+
 }

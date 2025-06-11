@@ -11,13 +11,41 @@
     </select>
   </div>
 
+  <div class="task-form">
+    <h3>{{ editMode ? 'Update Task' : 'Create Task' }}</h3>
+    <input [(ngModel)]="currentTask.title" placeholder="Title" />
+    <input [(ngModel)]="currentTask.dueDate" type="date" />
+    <select [(ngModel)]="currentTask.priority">
+      <option value="LOW">LOW</option>
+      <option value="MEDIUM">MEDIUM</option>
+      <option value="HIGH">HIGH</option>
+    </select>
+    <textarea [(ngModel)]="currentTask.description" placeholder="Description"></textarea>
+    <label>
+      <input type="checkbox" [(ngModel)]="currentTask.completed" />
+      Completed
+    </label>
+    <button (click)="submitTask()">
+      {{ editMode ? 'Update' : 'Create' }}
+    </button>
+  </div>
+
   <div *ngIf="tasks.length > 0; else noTasks">
     <div class="task-card" *ngFor="let task of tasks">
       <h3>{{ task.title }}</h3>
       <p><strong>Due:</strong> {{ task.dueDate }}</p>
-      <p><strong>Priority:</strong> <span class="priority {{ task.priority.toLowerCase() }}">{{ task.priority }}</span></p>
-      <p><strong>Status:</strong> {{ task.completed ? '✅ Completed' : '❌ Pending' }}</p>
+      <p><strong>Priority:</strong>
+        <span class="priority {{ task.priority.toLowerCase() }}">{{ task.priority }}</span>
+      </p>
+      <p><strong>Status:</strong>
+        {{ task.completed ? '✅ Completed' : '❌ Pending' }}
+      </p>
       <p *ngIf="task.description"><strong>Description:</strong> {{ task.description }}</p>
+
+      <div class="actions">
+        <button (click)="editTask(task)">✏️ Edit</button>
+        <button (click)="deleteTask(task.id)">🗑️ Delete</button>
+      </div>
     </div>
   </div>
 
